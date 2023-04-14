@@ -14,7 +14,6 @@ import {
 import { app } from './firebase.js';
 
 const auth = getAuth(app);
-const user = auth.currentUser;
 const provider = new GoogleAuthProvider();
 const fazerLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 const loginGoogle = () => signInWithPopup(auth, provider);
@@ -36,7 +35,6 @@ const usuariaLogada = (verificacao) => {
 
 export {
   auth,
-  user,
   fazerLogin,
   loginGoogle,
   fazerLogout,

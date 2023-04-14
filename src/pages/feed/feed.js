@@ -161,10 +161,11 @@ export default () => {
   const botaoPublicar = container.querySelector('.botao-publicar');
   botaoPublicar.addEventListener('click', async () => {
     const nivel = container.querySelector('input[name=nivel]:checked');
-    await fazerPost(titulo.value, autora.value, postagem.value, nivel.value);
     // eslint-disable-next-line max-len
-    if ((titulo.value === '') || (autora.value === '') || (postagem.value === '') || (nivel.value === false)) {
+    if ((titulo.value === '') || (autora.value === '') || (postagem.value === '') || (!nivel)) {
       alert('Por favor, preencha todos os campos!');
+    } else {
+      await fazerPost(titulo.value, autora.value, postagem.value, nivel.value);
     }
     limparForm();
   });

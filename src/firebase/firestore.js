@@ -9,7 +9,6 @@ import {
   arrayRemove,
   doc,
   query,
-  getDocs,
   deleteDoc,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';

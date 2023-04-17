@@ -13,13 +13,17 @@
 
 :root{
   --fonte-geral: 'Mulish';
+  
 }
-
+main{
+  height: 100vh;
+}
 body {
   background-color: #407279;
   font-family: var(--fonte-geral);
   color: #FFFFFF;
-  height: 100%;
+
+  /* height: 100%; */
 }
 
  .rodape{

@@ -19,10 +19,10 @@ body {
   background-color: #407279;
   font-family: var(--fonte-geral);
   color: #FFFFFF;
-  height: 100%;
+   height: 100%; 
 }
 
- .rodape{
+ /* .rodape{
   background-color: #085560;
   text-align: center;
   padding: 10px 0px 10px;
@@ -46,4 +46,4 @@ body {
     height: 0%;
     margin-bottom: 0;
   }
-}
+} */

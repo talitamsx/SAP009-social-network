@@ -25,7 +25,7 @@ Para entender melhor as necessidades do usuário, foi criado um questionário e 
 
 * [Forms](https://docs.google.com/forms/d/1COMhEm6fq0R220bUlIyGbzvqqAYgm5k8eY-bYp8sGnI/edit)
 
-<img src="src/imagens/respostas-forms.png">
+<img src="src/imagens/respostas-forms.png" height="500px">
 
 A partir dos dados coletados, foram definidas seis histórias de usuário:
 
@@ -64,13 +64,13 @@ Eu, que já possuo conhecimento no assunto, gostaria de compartilhar meu ponto d
 
 Para o protótipo de alta fidelidade foi utilizada a plataforma Figma.
 
-<p align="center"><img src="src/imagens/figma1.png"></p>
+<p align="center"><img src="src/imagens/figma1.png" height="500px"></p>
 <p align="center"> 1 - Tela de Login </p>
 
-<p align="center"><img src="src/imagens/figma2.png"></p>
+<p align="center"><img src="src/imagens/figma2.png" height="500px"></p>
 <p align="center">2 - Tela de cadastro </p>
 
-<p align="center"><img src="src/imagens/figma3.png"></p>
+<p align="center"><img src="src/imagens/figma3.png" height="500px"></p>
 <p align="center">3 - Feed </p>
 
 

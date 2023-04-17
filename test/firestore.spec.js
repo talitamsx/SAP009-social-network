@@ -6,7 +6,12 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  query,
+  orderBy,
+  onSnapshot,
 } from 'firebase/firestore';
+
+import { getAuth } from 'firebase/auth';
 
 import {
   database,
@@ -14,9 +19,12 @@ import {
   excluirPost,
   curtirPost,
   descurtirPost,
+  editarPost,
+  pegarPost,
 } from '../src/firebase/firestore';
 
 jest.mock('firebase/firestore');
+jest.mock('firebase/auth');
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -42,24 +50,63 @@ describe('database', () => {
   });
 });
 
+describe('pegarPost', () => {
+  it('deve acessar a publicação criada e retornar um array', async () => {
+    const mockOrderBy = 'ordem';
+    orderBy.mockReturnValueOnce(mockOrderBy);
+    const mockQuery = 'query';
+    query.mockReturnValueOnce(mockQuery);
+    const mockCollection = 'collection';
+    collection.mockReturnValueOnce(mockCollection);
+    onSnapshot.mockResolvedValueOnce([
+      {
+        id: '1',
+        data: () => ({ post: 'Post um' }),
+      },
+      {
+        id: '2',
+        data: () => ({ post: 'Post dois' }),
+      },
+    ]);
+    const acessarPost = await pegarPost();
+    expect(acessarPost).toEqual([
+      { id: '1', post: 'Post um' },
+      { id: '2', post: 'Post dois' },
+    ]);
+    expect(orderBy).toHaveBeenCalledTimes(1);
+    expect(orderBy).toHaveBeenCalledWith('data');
+    expect(collection).toHaveBeenCalledTimes(1);
+    expect(collection).toHaveBeenCalledWith(undefined, 'posts');
+    expect(query).toHaveBeenCalledTimes(1);
+    expect(query).toHaveBeenCalledWith(mockCollection, mockOrderBy);
+    expect(onSnapshot).toHaveBeenCalledTimes(1);
+    expect(onSnapshot).toHaveBeenCalledWith(mockQuery);
+  });
+});
+
 describe('fazerPost', () => {
   it('deve criar um post e guardar na coleção', async () => {
     addDoc.mockResolvedValueOnce();
     const mockCollection = 'collection';
     collection.mockReturnValueOnce(mockCollection);
+    const mockAuth = {
+      currentUser: {
+        displayName: 'nomeTeste',
+        uid: 'idteste',
+      },
+    };
+    getAuth.mockReturnValueOnce(mockAuth);
 
-    const nomeUsuaria = 'nomeTeste';
-    const idUsuaria = 'idteste';
     const tituloLivro = 'tituloTeste';
     const autoraLivro = 'autoraTeste';
     const nivelLeitura = 'nivelTeste';
     const postUsuaria = 'postTeste';
-    const dataPostagem = 'xx/xx/xxxx';
+    const dataPostagem = new Date();
     const curtidas = 0;
     const curtidasUsuaria = [];
     const posts = {
-      nome: nomeUsuaria,
-      id: idUsuaria,
+      nome: mockAuth.currentUser.displayName,
+      id: mockAuth.currentUser.uid,
       titulo: tituloLivro,
       autora: autoraLivro,
       nivel: nivelLeitura,
@@ -78,20 +125,6 @@ describe('fazerPost', () => {
   });
 });
 
-describe('excluirPost', () => {
-  it('deve excluir o post', async () => {
-    const mockDoc = 'doc';
-    doc.mockReturnValueOnce(mockDoc);
-    deleteDoc.mockResolvedValueOnce();
-    const postId = 'post-id';
-    await excluirPost(postId);
-    expect(doc).toHaveBeenCalledTimes(1);
-    expect(doc).toHaveBeenCalledWith(undefined, 'posts', postId);
-    expect(deleteDoc).toHaveBeenCalledTimes(1);
-    expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
-  });
-});
-
 describe('curtirPost', () => {
   it('deve ser uma função', () => {
     expect(typeof curtirPost).toBe('function');
@@ -100,7 +133,7 @@ describe('curtirPost', () => {
   it('deve acrescentar uma curtida a cada clique', async () => {
     updateDoc.mockResolvedValue();
     const mockDoc = 'doc';
-    doc.mockResolvedValueOnce(mockDoc);
+    doc.mockReturnValueOnce(mockDoc);
     const mockUnion = 'union';
     arrayUnion.mockReturnValueOnce(mockUnion);
 
@@ -111,7 +144,7 @@ describe('curtirPost', () => {
     };
 
     await curtirPost(postId, nomeUsuaria);
-    expect(doc).toHaveBeenCalledTime(1);
+    expect(doc).toHaveBeenCalledTimes(1);
     expect(doc).toHaveBeenCalledWith(undefined, 'posts', postId);
     expect(updateDoc).toHaveBeenCalledTimes(1);
     expect(updateDoc).toHaveBeenCalledWith(mockDoc, postAtualizado);
@@ -140,5 +173,37 @@ describe('descurtirPost', () => {
     expect(updateDoc).toHaveBeenCalledWith(mockDoc, postAtualizado);
     expect(arrayRemove).toHaveBeenCalledTimes(1);
     expect(arrayRemove).toHaveBeenCalledWith(nomeUsuaria);
+  });
+});
+
+describe('excluirPost', () => {
+  it('deve excluir o post', async () => {
+    const mockDoc = 'doc';
+    doc.mockReturnValueOnce(mockDoc);
+    deleteDoc.mockResolvedValueOnce();
+    const postId = 'post-id';
+    await excluirPost(postId);
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'posts', postId);
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+    expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
+  });
+});
+
+describe('editarPost', () => {
+  it('deve editar e atualizar a publicação', async () => {
+    updateDoc.mockResolvedValue();
+    const mockDoc = 'doc';
+    doc.mockReturnValueOnce(mockDoc);
+    const postId = 'post-id';
+    const editarTexto = 'texto-post';
+    const atualizarPost = {
+      post: editarTexto,
+    };
+    await editarPost(postId, editarTexto);
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'posts', postId);
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(updateDoc).toHaveBeenCalledWith(mockDoc, atualizarPost);
   });
 });

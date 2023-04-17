@@ -76,8 +76,8 @@ Resolução: a rede social foi desenvolvida com objetivo único de compartilhame
 
 ### 3.1 Protótipo de baixa fidelidade
 
-<img src="src/imagens/baixa1.jpg" height="500px">
-<img src="src/imagens/baixa2.jpg" height="500px">
+<img src="src/imagens/baixa1.jpeg" height="500px">
+<img src="src/imagens/baixa2.jpeg" height="500px">
 
 
 ### 3.2 Protótipo de alta fidelidade

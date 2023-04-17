@@ -111,7 +111,7 @@ describe('curtirPost', () => {
     };
 
     await curtirPost(postId, nomeUsuaria);
-    expect(doc).toHaveBeenCalledTime(1);
+    expect(doc).toHaveBeenCalledTimes(1);
     expect(doc).toHaveBeenCalledWith(undefined, 'posts', postId);
     expect(updateDoc).toHaveBeenCalledTimes(1);
     expect(updateDoc).toHaveBeenCalledWith(mockDoc, postAtualizado);

@@ -76,15 +76,14 @@ Resolução: a rede social foi desenvolvida com objetivo único de compartilhame
 
 ### 3.1 Protótipo de baixa fidelidade
 
-
-<img src="src/imagens/prototipo-baixa.png" height="500px">
+<p align="center"><img src="src/imagens/prototipo-baixa.png" height="300px"></p>
 
 
 ### 3.2 Protótipo de alta fidelidade
 
 Para o protótipo de alta fidelidade foi utilizada a plataforma Figma.
 
-<p align="center"><img src="src/imagens/prototipo-alta.png" height="500px"></p>
+<p align="center"><img src="src/imagens/prototipo-alta.png" height="400px"></p>
 
 
 ## 4. Testes

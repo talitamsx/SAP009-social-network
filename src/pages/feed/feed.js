@@ -139,6 +139,7 @@ export default () => {
       });
 
       botaoExcluir.addEventListener('click', () => {
+        // eslint-disable-next-line no-alert
         if (window.confirm('Tem certeza que deseja excluir a publicação?')) {
           excluirPost(post.postId);
           containerPost.remove();

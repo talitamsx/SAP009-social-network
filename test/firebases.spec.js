@@ -8,11 +8,13 @@ import {
 } from 'firebase/auth';
 
 import {
+ main
   loginGoogle,
   fazerLogout,
   fazerCadastro,
   fazerLogin,
 } from '../src/firebase/auth';
+
 
 jest.mock('firebase/auth');
 

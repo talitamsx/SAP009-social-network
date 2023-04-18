@@ -1,0 +1,20 @@
+.conteudo-sobre{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.sobre{
+  font-family: var(--fonte-geral);
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1.5rem;
+  width: 35rem;
+}
+
+.menina-sobre{
+  width: 15rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}

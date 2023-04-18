@@ -64,7 +64,7 @@ a{
   background-color: #085560;
   font-family: var(--fonte-geral);
   width: 14rem;
-  height: 18rem;
+  height: 21rem;
   font-size: 20px;
   border-radius: 10px;
   align-items: center; 
@@ -178,7 +178,7 @@ a{
     background-color: #085560;
     font-family: var(--fonte-geral);
     width: 15rem;
-    height: 25rem;
+    height: 21rem;
     font-size: 20px;
     border-radius: 10px;
     align-items: center;

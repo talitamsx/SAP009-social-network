@@ -168,19 +168,20 @@ textarea {
 
 #botao-like{
   display: flex;
-  cursor: pointer;
 }
 
 #coracao-vazio{
   width: 1.2rem;
   margin-left: 1.5rem;
   margin-right: 0.3rem;
+  cursor: pointer;
 }
 
 #coracao-cheio{
   width: 1.2rem;
   margin-left: 1.5rem;
   position: absolute;
+  cursor: pointer;
 }
 
 .hidden{

@@ -1,3 +1,6 @@
+import logo from '../../imagens/logo-lemos.png';
+import menina from '../../imagens/lemos-sobre.png';
+
 export default () => {
   const container = document.createElement('div');
 
@@ -5,7 +8,7 @@ export default () => {
 
   <header class="conteudo">
     <div class="menu-superior">
-     <a href="#login"> <img class="img-logo" src="/imagens/logo-lemos.png"> </a>
+     <a href="#login"> <img class="img-logo" src="${logo}"> </a>
      <h2 class="subtitulo">Incentivando a leitura feminista</h2> 
     </div>
   </header>
@@ -17,7 +20,7 @@ export default () => {
     comentários que facilitem a divulgação de livros, autoras e também 
     indiquem o nível de leitura: inciante, intermediário ou avançado. <br>
     Faça seu cadastro e venha compartilhar com a gente!</h2>
-    <img class="menina-sobre" src="imagens/lemos-sobre.png">
+    <img class="menina-sobre" src="${menina}">
  </section>
   `;
 

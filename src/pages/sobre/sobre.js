@@ -14,7 +14,9 @@ export default () => {
   repertório de leitura com temática feminista. Pensando nisso, 
   desenvolvemos esse projeto para publicar informações pontuais e 
   comentários que facilitem a divulgação de livros, autoras e também 
-  indiquem o nível de leitura: inciante, intermediário ou avançado.</h2>
+  indiquem o nível de leitura: inciante, intermediário ou avançado. <br>
+  Faça seu cadastro e venha compartilhar com a gente!</h2>
+  <img class="menina-lemos" src="imagens/lemos-figura.png">
   `;
 
   container.innerHTML = template;

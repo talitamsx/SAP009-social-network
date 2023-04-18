@@ -27,12 +27,6 @@ export default () => {
         <img class="botao-google" a href="#feed" src="imagens/figura-google.png"></a>
         <p class="texto-cadastro">Ainda não faz parte? <br> <a href="#cadastro">Cadastre-se aqui!</p></a>
       </form>
-        <footer class="rodape">
-        <div>
-          <a class="sobre" href="/#sobre">Sobre a Lemos</a>
-          <p class="texto-rodape">Desenvolvido por: Giselle Schwab, Melina Osik e Talita Martins, 2023.</p>
-        </div>
-      </footer>
         </section>
       </main>
      </body>

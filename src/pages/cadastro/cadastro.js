@@ -1,5 +1,6 @@
 import { fazerCadastro } from '../../firebase/auth.js';
 import { database } from '../../firebase/firestore.js';
+import logo from '../../imagens/logo-lemos.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -7,7 +8,7 @@ export default () => {
   const template = `
   <header class="conteudo-feed">
     <div class="cabecalho">
-     <a href="#login">  <img class="logo-cadastro" src="/imagens/logo-lemos.png"> </a>
+     <a href="#login"> <img class="logo-cadastro" src="${logo}"> </a>
     </div>
   </header>
   <section class="cadastro">
@@ -37,7 +38,7 @@ export default () => {
       </div>
         <button type="submit" class="botao-cadastrar"> Cadastrar </a> </button>
     </form>
-    <dialog class="modal">Erro ao criar cadastro. <br>
+    <dialog class="modal">Erro ao criar cadastro.<br>
     Por favor, preencha todos os campos corretamente.<br>
     <button class="botao-ok">OK</button>
     </dialog>
@@ -50,7 +51,7 @@ export default () => {
   const cadastroEmail = container.querySelector('#email-cadastro');
   const cadastroSenha = container.querySelector('#senha-cadastro');
   const formCadastro = container.querySelector('.form-cadastro');
-  const modal = container.querySelector('.modal-cadastro');
+  const modal = container.querySelector('.modal');
   const botaoOk = container.querySelector('.botao-ok');
 
   formCadastro.addEventListener('submit', (event) => {

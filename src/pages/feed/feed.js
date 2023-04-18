@@ -7,19 +7,25 @@ import {
   excluirPost,
   editarPost,
 } from '../../firebase/firestore.js';
+import logo from '../../imagens/logo-lemos.png';
+import avatar from '../../imagens/user.png';
+import like from '../../imagens/coracao-vazio.png';
+import liked from '../../imagens/coracao-preenchido.png';
+import editar from '../../imagens/editar.png';
+import excluir from '../../imagens/excluir.png';
 
 export default () => {
   const container = document.createElement('div');
   const template = `
   <header class="conteudo-feed">
     <div class="cabecalho-feed">
-      <img class="logo-feed" src="/imagens/logo-lemos.png" a href="/#login">
+      <img class="logo-feed" src="${logo}" a href="/#login">
       <button type="button" class="botao-sair">Sair</button>
     </div>
   </header>
   <main class="feed-post">
     <div class = "nome-usuaria">
-      <img class="avatar" src="/imagens/user.png">
+      <img class="avatar" src="${avatar}">
       <h3>Olá, ${auth.currentUser.displayName} !</h3>
     </div>
     <section class="nome-livro">
@@ -65,7 +71,7 @@ export default () => {
       let somaCurtidas = post.likesUsuaria.length;
       const templatePost = `
     <div class="nome-usuaria-post">   
-      <img class="avatar-post" src="/imagens/user.png">
+      <img class="avatar-post" src="${avatar}">
       <h3>${post.nome}</h3>
       <p class="dia-post"> ${post.date}</p>
     </div>  
@@ -76,11 +82,11 @@ export default () => {
       <textarea disabled class="texto-postagem">${post.post}</textarea>
     </section> 
     <div id="botao-like" class="display">
-     <img id="coracao-vazio" src="/imagens/coracao-vazio.png"> 
-     <img id="coracao-cheio" class="hidden" src="/imagens/coracao-preenchido.png">
+     <img id="coracao-vazio" src="${like}"> 
+     <img id="coracao-cheio" class="hidden" src="${liked}">
       <span id="soma-likes">${somaCurtidas}</span>
-      <img id="editar" src="/imagens/editar.png">
-      <img id="excluir" src="/imagens/excluir.png">
+      <img id="editar" src="${editar}">
+      <img id="excluir" src="${excluir}">
     </div>
      <button id="botao-salvar" class="hidden">Salvar</button>
 
@@ -163,6 +169,7 @@ export default () => {
     container.querySelector('.input-titulo').value = '';
     container.querySelector('.input-autora').value = '';
     container.querySelector('.texto-post').value = '';
+    container.querySelector('input[name=nivel]').setAttribute('checked', false);
   }
 
   const botaoPublicar = container.querySelector('.botao-publicar');
@@ -176,8 +183,8 @@ export default () => {
       });
     } else {
       await fazerPost(titulo.value, autora.value, postagem.value, nivel.value);
+      limparForm();
     }
-    limparForm();
   });
 
   const botaoSair = container.querySelector('.botao-sair');

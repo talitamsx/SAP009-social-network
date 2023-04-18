@@ -18,6 +18,8 @@
 
 Este projeto é uma rede social voltada para mulheres que gostariam de trocar informações sobre livros com a temática feminista. O objetivo é que as usuárias possam postar breves opiniões pessoais, a fim de compartilhar suas leituras, novas autoras e colaborar com o direcionamento de leitoras iniciantes.
 
+Link do projeto: https://lemos-sap009.web.app
+
 
 ## 2. Histórias de usuário
 

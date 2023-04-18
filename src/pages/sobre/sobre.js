@@ -5,18 +5,20 @@ export default () => {
 
   <header class="conteudo">
     <div class="menu-superior">
-      <img class="img-logo" src="/imagens/logo-lemos.png" href="/#login">
+     <a href="#login"> <img class="img-logo" src="/imagens/logo-lemos.png"> </a>
      <h2 class="subtitulo">Incentivando a leitura feminista</h2> 
     </div>
   </header>
-  <h2 class="sobre">A Lemos é uma rede social que surgiu a partir da 
-  identificação da vontade das mulheres em aumentar ou iniciar um 
-  repertório de leitura com temática feminista. Pensando nisso, 
-  desenvolvemos esse projeto para publicar informações pontuais e 
-  comentários que facilitem a divulgação de livros, autoras e também 
-  indiquem o nível de leitura: inciante, intermediário ou avançado. <br>
-  Faça seu cadastro e venha compartilhar com a gente!</h2>
-  <img class="menina-lemos" src="imagens/lemos-figura.png">
+  <section class="conteudo-sobre">
+    <h2 class="sobre">A Le<span style= "color:#FF7373;">m</span>os é uma rede social que surgiu a partir da 
+    identificação da vontade das mulheres em aumentar ou iniciar um 
+    repertório de leitura com temática feminista. Pensando nisso, 
+    desenvolvemos esse projeto para publicar informações pontuais e 
+    comentários que facilitem a divulgação de livros, autoras e também 
+    indiquem o nível de leitura: inciante, intermediário ou avançado. <br>
+    Faça seu cadastro e venha compartilhar com a gente!</h2>
+    <img class="menina-sobre" src="imagens/lemos-sobre.png">
+ </section>
   `;
 
   container.innerHTML = template;

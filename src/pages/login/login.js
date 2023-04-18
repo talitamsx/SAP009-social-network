@@ -5,7 +5,7 @@ export default () => {
   const template = ` 
   <header class="conteudo">
     <div class="menu-superior">
-      <img class="img-logo" src="/imagens/logo-lemos.png" href="/#login">
+      <img class="img-logo" src="/imagens/logo-lemos.png" a href="#login"/>
      <h2 class="subtitulo">Incentivando a leitura feminista</h2> 
     </div>
   </header>
@@ -20,14 +20,15 @@ export default () => {
         <h1 class="titulo-login">Login</h1>
         <input type="text" class="email-login" id="email-login" placeholder="E-MAIL" required><br>
         <input type="password" class="senha-login" id="senha-login" placeholder="SENHA" required><br>
-        <p class="texto-senha"> Esqueci a senha </p>
-        <p class="texto-erro" id="textoErro"></p>
         <button type="submit" class="botao-entrar">Entrar</button>
         <p class="texto-ou"> ou </p>
         <img class="botao-google" a href="#feed" src="imagens/figura-google.png"></a>
         <p class="texto-cadastro">Ainda não faz parte? <br> <a href="#cadastro">Cadastre-se aqui!</p></a>
       </form>
-        </section>
+   </section>
+      <dialog class="modal"> Usuário ou senha incorretos
+        <button class="botao-ok">Ok</button>
+      </dialog>
       </main>
      </body>
     
@@ -39,7 +40,8 @@ export default () => {
   const loginSenha = container.querySelector('#senha-login');
   const botaoEntrar = container.querySelector('.botao-entrar');
   const botaoGoogle = container.querySelector('.botao-google');
-  const mensagemErro = container.querySelector('.texto-erro');
+  const modal = container.querySelector('.modal');
+  const botaoOk = container.querySelector('.botao-ok');
 
   botaoEntrar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -49,7 +51,10 @@ export default () => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        mensagemErro.innerHTML = 'Usuário ou senha incorretos';
+        modal.showModal();
+        botaoOk.addEventListener('click', () => {
+          modal.close();
+        });
       });
   });
 

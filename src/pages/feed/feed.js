@@ -13,7 +13,7 @@ export default () => {
   const template = `
   <header class="conteudo-feed">
     <div class="cabecalho-feed">
-      <img class="logo-feed" src="/imagens/logo-lemos.png" href="/#login">
+      <img class="logo-feed" src="/imagens/logo-lemos.png" a href="/#login">
       <button type="button" class="botao-sair">Sair</button>
     </div>
   </header>
@@ -50,6 +50,9 @@ export default () => {
       <h3 class="texto-ultimos-posts">Últimas publicações</h3>
       <div class="ultimos-posts"></div>
     </div>
+    <dialog class="modal"> Por favor, <br> preencha todos os campos. <br>
+      <button class="botao-ok">Ok</button>
+    </dialog>
   </main>
 
   `;
@@ -79,7 +82,8 @@ export default () => {
       <img id="editar" src="/imagens/editar.png">
       <img id="excluir" src="/imagens/excluir.png">
     </div>
-     <button id="botao-salvar" class="hidden">Salvar</button> </div>
+     <button id="botao-salvar" class="hidden">Salvar</button>
+
       `;
 
       containerPost.innerHTML = templatePost;
@@ -152,6 +156,8 @@ export default () => {
   const titulo = container.querySelector('.input-titulo');
   const autora = container.querySelector('.input-autora');
   const postagem = container.querySelector('.texto-post');
+  const modal = container.querySelector('.modal');
+  const botaoOk = container.querySelector('.botao-ok');
 
   function limparForm() {
     container.querySelector('.input-titulo').value = '';
@@ -164,7 +170,10 @@ export default () => {
     const nivel = container.querySelector('input[name=nivel]:checked');
     // eslint-disable-next-line max-len
     if ((titulo.value === '') || (autora.value === '') || (postagem.value === '') || (!nivel)) {
-      alert('Por favor, preencha todos os campos!');
+      modal.showModal();
+      botaoOk.addEventListener('click', () => {
+        modal.close();
+      });
     } else {
       await fazerPost(titulo.value, autora.value, postagem.value, nivel.value);
     }

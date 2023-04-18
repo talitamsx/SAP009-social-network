@@ -7,7 +7,7 @@ export default () => {
   const template = `
   <header class="conteudo-feed">
     <div class="cabecalho">
-      <img class="logo-cadastro" src="/imagens/logo-lemos.png" href="/#login">
+     <a href="#login">  <img class="logo-cadastro" src="/imagens/logo-lemos.png"> </a>
     </div>
   </header>
   <section class="cadastro">
@@ -37,6 +37,10 @@ export default () => {
       </div>
         <button type="submit" class="botao-cadastrar"> Cadastrar </a> </button>
     </form>
+    <dialog class="modal">Erro ao criar cadastro. <br>
+    Por favor, preencha todos os campos corretamente.<br>
+    <button class="botao-ok">OK</button>
+    </dialog>
    </section> 
   `;
 
@@ -46,7 +50,8 @@ export default () => {
   const cadastroEmail = container.querySelector('#email-cadastro');
   const cadastroSenha = container.querySelector('#senha-cadastro');
   const formCadastro = container.querySelector('.form-cadastro');
-  const mensagemErro = container.querySelector('.texto-erro');
+  const modal = container.querySelector('.modal-cadastro');
+  const botaoOk = container.querySelector('.botao-ok');
 
   formCadastro.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -56,7 +61,10 @@ export default () => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        mensagemErro.innerHTML = 'Erro ao criar cadastro';
+        modal.showModal();
+        botaoOk.addEventListener('click', () => {
+          modal.close();
+        });
       });
   });
 

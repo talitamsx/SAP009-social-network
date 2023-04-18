@@ -53,6 +53,7 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .botao-cadastrar{
@@ -73,4 +74,40 @@
 
 .botao-cadastrar:hover{
   background-color:#085560;
+}
+
+dialog::backdrop{
+  background-color: rgb(0 0 0 / .5);
+}
+
+dialog{
+  background-color: #085560;
+  font-family: var(--fonte-geral);
+  color: #FFFFFF;
+  width: 18rem;
+  font-size: 19px;
+  text-align: center;
+  border-radius: 10px;
+  align-items: center; 
+  margin: 2%;
+  top: 50%;
+  left: 48%;
+  transform: translate(-50%,-50%);
+  transition: 5ms;
+  padding: 1.2rem;
+}
+
+.botao-ok{
+  width: 59px;
+  height: 25px;
+  left: 94px;
+  top: 193px;
+  color: #FFFFFF;
+  font-size: 14px;
+  background: #407279;
+  border: 0.5px solid #FFFFFF;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
 }

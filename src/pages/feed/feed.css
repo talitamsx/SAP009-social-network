@@ -151,7 +151,6 @@ textarea {
   border-radius: 10px;
   padding: 0.2rem;
   margin-left: 0.5rem;
-  cursor: pointer;
 }
 
 .publicacao{
@@ -169,6 +168,7 @@ textarea {
 
 #botao-like{
   display: flex;
+  cursor: pointer;
 }
 
 #coracao-vazio{
@@ -191,6 +191,7 @@ textarea {
   width: 0.9rem;
   height: 1rem;
   margin-left: 16rem;
+  cursor: pointer;
 }
 
 #excluir{
@@ -198,6 +199,7 @@ textarea {
   height: 1rem;
   margin-left: auto;
   margin-right: 1.7rem;
+  cursor: pointer;
 }
 
 #botao-salvar{

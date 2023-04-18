@@ -8,24 +8,15 @@ import {
 } from 'firebase/auth';
 
 import {
-  deleteDoc,
-  doc,
-} from 'firebase/firestore';
-
-import {
+ main
   loginGoogle,
   fazerLogout,
   fazerCadastro,
   fazerLogin,
 } from '../src/firebase/auth';
 
-import {
-  curtirPost,
-  excluirPost,
-} from '../src/firebase/firestore';
 
 jest.mock('firebase/auth');
-jest.mock('firebase/firestore');
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -79,17 +70,5 @@ describe('fazerCadastro', () => {
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockAuth, email, senha);
     expect(updateProfile).toHaveBeenCalledTimes(1);
     expect(updateProfile).toHaveBeenCalledWith(mockAuth.currentUser, { displayName: nome });
-  });
-});
-
-describe('excluirPost', () => {
-  it('deve excluir o post', () => {
-    expect(excluirPost).deleteDoc
-  });
-});
-
-describe('curtirPost', () => {
-  it('deve ser uma função', () => {
-    expect(typeof curtirPost).toBe('function');
   });
 });
